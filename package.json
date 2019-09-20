@@ -4,7 +4,8 @@
   "description": "Build-Week-Mentor-Me-Backend",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "server": "nodemon index.js"
   },
   "repository": {
     "type": "git",
