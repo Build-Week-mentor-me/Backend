@@ -38,7 +38,7 @@ function findQuestions(user_id) {
   if (user_id) {
     return db('questions as q')
     .join('users as u', 'u.id', 'q.user_id')
-    .where(user_id)
+    .where({user_id})
   } else {
     res.status(404).json({ message: 'User ID not found' })
   }
@@ -56,7 +56,7 @@ function findResponses(question_id) {
   if (question_id) {
     return db('responses as r')
       .join('questions as q', 'q.id', 'r.question_id')
-      .where(question_id)
+      .where({question_id})
   } else {
     res.status(404).json({ message: 'Question ID not found' })
   }
