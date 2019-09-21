@@ -1,0 +1,29 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Build-Week-Mentor-Me-Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "server": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Build-Week-mentor-me/Backend.git"
+  },
+  "author": "TJ Feledy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Build-Week-mentor-me/Backend/issues"
+  },
+  "homepage": "https://github.com/Build-Week-mentor-me/Backend#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.19.4",
+    "nodemon": "^1.19.2",
+    "sqlite3": "^4.1.0"
+  }
+}
