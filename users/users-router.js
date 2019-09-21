@@ -49,4 +49,15 @@ router.post('/login', (req, res) => {
     })
 })
 
+// Get users endpoint:
+router.get('/', (req, res) => {
+  Users.findUsers()
+    .then(users => {
+      res.json(users)
+    })
+    .catch(err => {
+      res.status(500).json({ errorMessage: `${err}` })
+    })
+})
+
 module.exports = router

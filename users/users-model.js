@@ -23,7 +23,7 @@ function findBy(info) {
 }
 
 function findUsers() {
-  return db('users')
+  return db('users').select('id','username', 'position')
 }
 
 function findUser(user_id) {
