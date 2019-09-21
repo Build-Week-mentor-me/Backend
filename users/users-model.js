@@ -1,6 +1,7 @@
 db = require('../database/dbConfig.js')
 
 module.exports = {
+  findBy,
   findUsers,
   findUser,
   findQuestions,
@@ -17,13 +18,17 @@ module.exports = {
   removeResponse
 }
 
+function findBy(info) {
+  return db('users').where(info)
+}
+
 function findUsers() {
   return db('users')
 }
 
 function findUser(user_id) {
   if (user_id) {
-    return db('users').where({id}).first()
+    return db('users').where({id: user_id}).first()
   }else {
     res.status(404).json({ message: 'User ID not found' })
   }
@@ -41,7 +46,7 @@ function findQuestions(user_id) {
 
 function findQuestion(question_id) {
   if (question_id) {
-    return db('questions').where({ question_id }).first()
+    return db('questions').where({ id: question_id }).first()
   } else {
     res.status(404).json({ message: 'Question ID not found' })
   }

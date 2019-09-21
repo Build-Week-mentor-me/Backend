@@ -13,7 +13,7 @@ router.post('/register', (req, res) => {
   const hash = bcrypt.hashSync(user.password, 10)
   user.password = hash
 
-  Users.add(user)
+  Users.addUser(user)
     .then(newUser => {
       const token = generateToken(newUser)
 
@@ -48,3 +48,5 @@ router.post('/login', (req, res) => {
       res.status(500).json({ errorMessage: `${err}` })
     })
 })
+
+module.exports = router
