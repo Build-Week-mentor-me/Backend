@@ -80,7 +80,7 @@ function addQuestion(question) {
         return findQuestion(id[0])
       })
   } else {
-    res.status(404).json({ message: 'Question data is missing' })
+    res.status(404).json({ message: 'Required data is missing' })
   }
 }
 
@@ -91,7 +91,7 @@ function addResponse(response) {
         return findResponse(id[0])
       })
   } else {
-    res.status(404).json({ message: 'Response data is missing' })
+    res.status(404).json({ message: 'Required data is missing' })
   }
 }
 
