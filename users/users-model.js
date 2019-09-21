@@ -58,15 +58,36 @@ function findResponses(question_id) {
 }
 
 function addUser(user) {
-
+  if (user) {
+    return db('users').insert(user)
+      .then(id => {
+        return findUser(id[0])
+      })
+  }else {
+    res.status(404).json({ message: 'User data is missing' })
+  }
 }
 
 function addQuestion(question) {
-
+  if (question) {
+    return db('questions').insert(question)
+      .then(id => {
+        return findQuestion(id[0])
+      })
+  } else {
+    res.status(404).json({ message: 'Question data is missing' })
+  }
 }
 
 function addResponse(response) {
-
+  if (response) {
+    return db('responses').insert(response)
+      .then(id => {
+        return findResponse(id[0])
+      })
+  } else {
+    res.status(404).json({ message: 'Response data is missing' })
+  }
 }
 
 function updateUser(changes, user_id) {
