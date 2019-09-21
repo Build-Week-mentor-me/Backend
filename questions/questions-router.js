@@ -5,8 +5,11 @@ const Questions = require('../users/users-model.js')
 // ***endpoints start with /api/users/questions***
 
 // GET ALL QUESTIONS FOR A SINGLE USER
-router.get('/', (req, res) => {
-  const user_id = req.body.id
+
+router.post('')
+
+router.get('/user/:id', (req, res) => {
+  const user_id = req.params.id
 
   Questions.findQuestions(user_id)
     .then(questions => {
