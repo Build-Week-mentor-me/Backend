@@ -7,3 +7,5 @@
 
   - LogIn:  api/users/login
     - username and password are required
+
+  - Get Users:  api/users
