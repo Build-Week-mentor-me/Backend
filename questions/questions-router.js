@@ -27,10 +27,10 @@ router.get('/user/:id', (req, res) => {
 
   Questions.findQuestions(user_id)
     .then(questions => {
-      if (questions) {
-        res.status(200).json(questions)
-      }else {
+      if (questions.length === 0) {
         res.status(404).json({ message: 'No questions found.' })
+      }else {
+        res.status(200).json(questions)
       }
     })
     .catch(err => {
