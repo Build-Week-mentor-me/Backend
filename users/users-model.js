@@ -37,6 +37,7 @@ function findUser(user_id) {
 function findQuestions(user_id) {
   if (user_id) {
     return db('questions as q')
+    .select('id','user_id','username','position','question','business-type')
     .join('users as u', 'u.id', 'q.user_id')
     .where({user_id})
   } else {
