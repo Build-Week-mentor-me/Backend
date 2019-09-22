@@ -37,8 +37,8 @@ function findUser(user_id) {
 function findQuestions(user_id) {
   if (user_id) {
     return db('questions as q')
-    .select('id','user_id','username','position','question','business-type')
     .join('users as u', 'u.id', 'q.user_id')
+    .select('q.id','user_id','u.username','u.position','question','business-type')
     .where({user_id})
   } else {
     res.status(404).json({ message: 'User ID not found' })
