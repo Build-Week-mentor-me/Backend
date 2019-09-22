@@ -22,7 +22,7 @@ router.post('/', (req, res) => {
   }
 })
 
-router.get('/user/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const user_id = req.params.id
 
   Questions.findQuestions(user_id)
