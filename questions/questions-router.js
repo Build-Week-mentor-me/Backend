@@ -7,15 +7,19 @@ const Questions = require('../users/users-model.js')
 // GET ALL QUESTIONS FOR A SINGLE USER
 
 router.post('/', (req, res) => {
-  const question = req.body
-
-  Questions.addQuestion(question)
-    .then(question => {
-      res.status(200).json(question)
-    })
-    .catch(err => {
-      res.status(500).json({ errorMessage: `${err}` })
-    })
+  const newQuestion = req.body
+  const { user_id, question } = req.body
+  if (!user_id || !question) {
+    res.status(400).json({ message: 'user_id and question are required' })
+  }else {
+    Questions.addQuestion(newQuestion)
+      .then(question => {
+        res.status(200).json(question)
+      })
+      .catch(err => {
+        res.status(500).json({ errorMessage: `${err}` })
+      })
+  }
 })
 
 router.get('/user/:id', (req, res) => {
