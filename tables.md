@@ -8,8 +8,8 @@ Tables:
   - questions
       - id
       - user_id(foreign key): required
-      - username: required
-      - position(Mentor/Entrepreneur): required
+      - username
+      - position(Mentor/Entrepreneur)
       - question:  required
       - business-type
 
