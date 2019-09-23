@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 
 require('dotenv').config()
 
@@ -11,6 +12,7 @@ const responsesRouter = require('../responses/responses-router.js')
 const server = express()
 
 server.use(express.json())
+server.use(cors())
 
 server.use('/api/users', usersRouter)
 server.use('/api/users/questions', questionsRouter)
