@@ -16,11 +16,16 @@ router.post('/register', (req, res) => {
   Users.addUser(user)
     .then(newUser => {
       const token = generateToken(newUser)
+      const {username, password, position} = newUser
 
-      res.status(201).json({
-        user: newUser,
-        token
-      })
+      if (username & password & position) {
+        res.status(201).json({
+          user: newUser,
+          token
+        })
+      }else {
+        res.status(400).json({ message: 'API handles a username, password, and position.' })
+      }
     })
     .catch(err => {
       res.status(500).json({ errorMessage: `${err}` })
