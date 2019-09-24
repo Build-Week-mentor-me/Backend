@@ -38,4 +38,21 @@ router.get('/:id', (req, res) => {
     })
 })
 
+// GET A QUESTION
+router.get('/question/:id', (req, res) => {
+  const question_id = req.params.id
+
+  Questions.findQuestion(question_id)
+    .then(question => {
+      if (question) {
+        res.status(200).json(question)
+      }else {
+        res.status(404).json({ message: 'No question with that ID was found.' })
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ errorMessage: `${err}` })
+    })
+})
+
 module.exports = router

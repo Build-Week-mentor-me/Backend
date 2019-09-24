@@ -16,8 +16,6 @@ exports.up = function (knex) {
         .inTable('users')
         .onUpdate('CASCADE')
         .onDelete('CASCADE')
-      tbl.string('username', 128)
-      tbl.string('position', 128)
       tbl.string('question', 500).notNullable()
       tbl.string('business-type', 128)
     })

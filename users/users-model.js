@@ -47,7 +47,10 @@ function findQuestions(user_id) {
 
 function findQuestion(question_id) {
   if (question_id) {
-    return db('questions').where({ id: question_id }).first()
+    return db('questions as q')
+      .join('users as u', 'u.id', 'q.user_id')
+      .select('q.*', 'u.username', 'u.position')
+      .where('q.id', question_id).first()
   } else {
     res.status(404).json({ message: 'Question ID not found' })
   }
