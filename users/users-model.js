@@ -67,13 +67,15 @@ function findResponses(question_id) {
 }
 
 function addUser(user) {
-  if (user) {
+  const { username, password, position } = user
+
+  if (username & password & position) {
     return db('users').insert(user)
       .then(id => {
         return findUser(id[0])
       })
   }else {
-    res.status(404).json({ message: 'User data is missing' })
+    return null
   }
 }
 
