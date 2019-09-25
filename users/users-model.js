@@ -147,7 +147,16 @@ function updateResponse(changes, response_id) {
 }
 
 function removeUser(user_id) {
-  
+  const deleted = findUser(user_id)
+
+  if (user_id) {
+    return db('users').where({user_id}).del()
+      .then(count => {
+        return deleted
+      })
+  }else {
+    return null
+  }
 }
 
 function removeQuestion(question_id) {
