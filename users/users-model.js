@@ -140,7 +140,10 @@ function updateQuestion(changes, question_id) {
 }
 
 function updateResponse(changes, response_id) {
-
+  return db('responses').where({ response_id }).update(changes)
+    .then(id => {
+      return findResponse(id[0])
+    })
 }
 
 function removeUser(user_id) {
