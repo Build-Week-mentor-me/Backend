@@ -160,7 +160,16 @@ function removeUser(user_id) {
 }
 
 function removeQuestion(question_id) {
+  const deleted = findQuestion(question_id)
 
+  if (question_id) {
+    return db('users').where({ question_id }).del()
+      .then(count => {
+        return deleted
+      })
+  } else {
+    return null
+  }
 }
 
 function removeResponse(response_id) {
