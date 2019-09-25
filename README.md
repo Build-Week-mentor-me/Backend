@@ -5,6 +5,7 @@
 - Endpoints:
   - example: https://bw-unit4-mentor-me.herokuapp.com/api/users/register
 
+USERS:
   - Register: api/users/register
     - username, password, and position(Mentor/Entrepreneur) are required
     - returns the new user with a token
@@ -16,6 +17,7 @@
   - Get Users:  api/users
     - returns a list of all users (id, username, and position)
 
+QUESTIONS:
   - Post Question:  api/users/questions
     - user_id, question, and business-type
       - user_id and question are required
@@ -29,3 +31,18 @@
 
   - Get a specific question:  api/users/questions/question/:id
     - returns the user and question (id, user_id, username, position, question, and business-type) 
+  
+RESPONSES:
+  - Post response:  api/users/responses
+    - question_id, response, and business-type
+      - question_id and response are required
+      - returns the user and response (id, question_id, username, position, response, and business-type)
+
+  - Get all responses: api/users/responses
+    - returns a list of all responses (id, question, question_id, username, position, response, and business-type)
+
+  - Get specific question's responses:  api/users/responses/:id
+    - returns a list of all of a question's responses (id, question, question_id, username, position, response, and business-type)
+
+  - Get a specific response:  api/users/responses/response/:id
+    - returns the user and response (id, question, question_id, username, position, response, and business-type) 
