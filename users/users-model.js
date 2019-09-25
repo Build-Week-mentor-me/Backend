@@ -67,7 +67,13 @@ function findResponses(question_id) {
     return db('responses as r')
       .join('questions as q', 'q.id', 'r.question_id')
       .where({question_id})
-  } else {
+  } 
+  else if (question_id === null || question_id === undefined) {
+    return db('responses as r')
+      .join('questions as q', 'q.id', 'r.question_id')
+      .join('users as u', 'u.id', 'q.user_id')
+      .select('r.*', 'u.username', 'u.position')
+  }else {
     return {message: 'Question ID not found' }
   }
 }
