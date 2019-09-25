@@ -39,10 +39,10 @@ RESPONSES:
       - returns the user and response (id, question_id, username, position, response, and business-type)
 
   - Get all responses: api/users/responses
-    - returns a list of all responses (id, question_id, username, position, response, and business-type)
+    - returns a list of all responses (id, question, question_id, username, position, response, and business-type)
 
   - Get specific question's responses:  api/users/responses/:id
-    - returns a list of all of a question's responses (id, question_id, username, position, response, and business-type)
+    - returns a list of all of a question's responses (id, question, question_id, username, position, response, and business-type)
 
   - Get a specific response:  api/users/responses/response/:id
-    - returns the user and response (id, question_id, username, position, response, and business-type) 
+    - returns the user and response (id, question, question_id, username, position, response, and business-type) 
