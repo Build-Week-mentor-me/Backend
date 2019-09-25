@@ -87,12 +87,13 @@ function findResponse(response_id) {
 function addUser(user) {
   const { username, password, position } = user
 
-  if (username & password & position) {
+  if (username && password && position) {
     return db('users').insert(user)
       .then(id => {
         return findUser(id[0])
       })
   }else {
+    console.log('error!!!')
     return {message: 'Required data is missing'}
   }
 }

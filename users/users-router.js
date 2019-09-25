@@ -15,7 +15,7 @@ router.post('/register', (req, res) => {
 
   const { username, password, position } = user
 
-  if(username & password & position & user.length === 3) {
+  if(username && password && position && Object.keys(user).length === 3) {
 
     Users.addUser(user)
       .then(newUser => {
