@@ -21,6 +21,20 @@ router.post('/', (req, res) => {
   }
 })
 
+router.get('/', (req, res) => {
+  Questions.findQuestions()
+    .then(questions => {
+      if (questions.length === 0) {
+        res.status(404).json({ message: 'No questions found.' })
+      } else {
+        res.status(200).json(questions)
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ errorMessage: `${err}` })
+    })
+})
+
 // GET ALL QUESTIONS FOR A SINGLE USER
 router.get('/:id', (req, res) => {
   const user_id = req.params.id

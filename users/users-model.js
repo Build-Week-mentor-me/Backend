@@ -35,13 +35,19 @@ function findUser(user_id) {
 }
 
 function findQuestions(user_id) {
+  console.log(user_id)
   if (user_id) {
     return db('questions as q')
     .join('users as u', 'u.id', 'q.user_id')
     .select('q.id','user_id','u.username','u.position','question','business-type')
     .where({user_id})
-  } else {
-    res.status(404).json({ message: 'User ID not found' })
+  }
+  else if (user_id === null || user_id === undefined) {
+    return db('questions as q')
+      .join('users as u', 'u.id', 'q.user_id')
+      .select('q.id', 'user_id', 'u.username', 'u.position', 'question', 'business-type')
+  }else {
+    return {message: 'No user with that ID was found'}
   }
 }
 
