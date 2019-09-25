@@ -72,6 +72,18 @@ function findResponses(question_id) {
   }
 }
 
+function findResponse(response_id) {
+  if (response_id) {
+    return db('responses as r')
+      .join('questions as q', 'q.id', 'r.question_id')
+      .join('users as u', 'u.id', 'q.user_id')
+      .select('r.*', 'u.username', 'u.position')
+      .where('r.id', response_id).first()
+  } else {
+    return { message: 'Response ID not found' }
+  }
+}
+
 function addUser(user) {
   const { username, password, position } = user
 
