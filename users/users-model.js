@@ -163,7 +163,7 @@ function removeQuestion(question_id) {
   const deleted = findQuestion(question_id)
 
   if (question_id) {
-    return db('users').where({ question_id }).del()
+    return db('questions').where({ question_id }).del()
       .then(count => {
         return deleted
       })
@@ -173,5 +173,14 @@ function removeQuestion(question_id) {
 }
 
 function removeResponse(response_id) {
+  const deleted = findQuestion(response_id)
 
+  if (response_id) {
+    return db('responses').where({ response_id }).del()
+      .then(count => {
+        return deleted
+      })
+  } else {
+    return null
+  }
 }
