@@ -30,8 +30,6 @@ exports.up = function (knex) {
         .inTable('questions')
         .onUpdate('CASCADE')
         .onDelete('CASCADE')
-      tbl.string('username', 128).notNullable()
-      tbl.string('position', 128).notNullable()
       tbl.string('response', 500).notNullable()
       tbl.string('business-type', 128)
     })
