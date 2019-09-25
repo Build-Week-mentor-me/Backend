@@ -30,7 +30,7 @@ function findUser(user_id) {
   if (user_id) {
     return db('users').where({id: user_id}).first()
   }else {
-    res.status(404).json({ message: 'User ID not found' })
+    return { message: 'User ID not found' }
   }
 }
 
@@ -58,7 +58,7 @@ function findQuestion(question_id) {
       .select('q.*', 'u.username', 'u.position')
       .where('q.id', question_id).first()
   } else {
-    res.status(404).json({ message: 'Question ID not found' })
+    return { message: 'Question ID not found' }
   }
 }
 
@@ -68,7 +68,7 @@ function findResponses(question_id) {
       .join('questions as q', 'q.id', 'r.question_id')
       .where({question_id})
   } else {
-    res.status(404).json({ message: 'Question ID not found' })
+    return {message: 'Question ID not found' }
   }
 }
 
@@ -81,7 +81,7 @@ function addUser(user) {
         return findUser(id[0])
       })
   }else {
-    return null
+    return {message: 'Required data is missing'}
   }
 }
 
@@ -92,8 +92,7 @@ function addQuestion(question) {
         return findQuestion(id[0])
       })
   } else {
-    res.status(404).json({ message: 'Required data is missing' })
-  }
+    return { message: 'Required data is missing' }  }
 }
 
 function addResponse(response) {
@@ -103,8 +102,7 @@ function addResponse(response) {
         return findResponse(id[0])
       })
   } else {
-    res.status(404).json({ message: 'Required data is missing' })
-  }
+    return { message: 'Required data is missing' }  }
 }
 
 function updateUser(changes, user_id) {

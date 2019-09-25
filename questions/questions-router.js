@@ -21,6 +21,7 @@ router.post('/', (req, res) => {
   }
 })
 
+// GET ALL QUESTIONS
 router.get('/', (req, res) => {
   Questions.findQuestions()
     .then(questions => {
