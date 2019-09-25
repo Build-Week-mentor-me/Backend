@@ -21,6 +21,9 @@
       - user_id and question are required
       - returns the user and question (id, user_id, username, position, question, and business-type)
 
+  - Get all questions: api/users/questions
+    - returns a list of all questions (id, user_id, username, position, question, and business-type)
+
   - Get specific user's questions:  api/users/questions/:id
     - returns a list of all of a user's questions (id, user_id, username, position, question, and business-type)
 
