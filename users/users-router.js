@@ -13,23 +13,26 @@ router.post('/register', (req, res) => {
   const hash = bcrypt.hashSync(user.password, 10)
   user.password = hash
 
-  Users.addUser(user)
-    .then(newUser => {
-      const token = generateToken(newUser)
-      const {username, password, position} = newUser
+  const { username, password, position } = user
 
-      if (username & password & position) {
+  if(username & password & position & user.length === 3) {
+
+    Users.addUser(user)
+      .then(newUser => {
+        const token = generateToken(newUser)
+  
         res.status(201).json({
           user: newUser,
           token
         })
-      }else {
-        res.status(400).json({ message: 'API handles a username, password, and position.' })
-      }
-    })
-    .catch(err => {
-      res.status(500).json({ errorMessage: `${err}` })
-    })
+        
+      })
+      .catch(err => {
+        res.status(500).json({ errorMessage: `${err}` })
+      })
+  }else {
+    res.status(400).json({ message: 'Register handles 3 values: username, password, and position' })
+  }
 })
 
 // Login endpoint:
