@@ -133,7 +133,10 @@ function updateUser(changes, user_id) {
 }
 
 function updateQuestion(changes, question_id) {
-
+  return db('questions').where({ question_id }).update(changes)
+    .then(id => {
+      return findQuestion(id[0])
+    })
 }
 
 function updateResponse(changes, response_id) {
