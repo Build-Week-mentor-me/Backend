@@ -126,7 +126,10 @@ function addResponse(response) {
 }
 
 function updateUser(changes, user_id) {
-  
+  return db('users').where({user_id}).update(changes)
+    .then(id => {
+      return findUser(id[0])
+    })
 }
 
 function updateQuestion(changes, question_id) {
