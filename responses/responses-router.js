@@ -37,7 +37,7 @@ router.get('/', (req, res) => {
     })
 })
 
-// GET ALL RESPONSES FOR A SINGLE USER
+// GET ALL RESPONSES FOR A SINGLE QUESTION
 router.get('/:id', (req, res) => {
   const question_id = req.params.id
 
