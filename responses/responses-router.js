@@ -94,17 +94,17 @@ router.put('/:id', (req, res) => {
   }
 })
 
-// DELETE A USER
+// DELETE A RESPONSE
 router.delete('/:id', (rec, res) => {
   const { id } = req.params
-  const deleted = Users.findUser(id)
+  const deleted = Responses.findResponse(id)
 
-  Users.removeUser(id)
+  Responses.removeResponse(id)
     .then(count => {
       if (count && count > 0) {
         res.status(200).json(deleted)
       } else {
-        res.status(404).json({ message: 'User with the specified ID not found' })
+        res.status(404).json({ message: 'Response with the specified ID not found' })
       }
     })
     .catch(err => {
