@@ -71,21 +71,21 @@ router.get('/response/:id', (req, res) => {
     })
 })
 
-// UPDATE A USER
+// UPDATE A RESPONSE
 router.put('/:id', (req, res) => {
-  const { username, password, position } = req.body
+  const { question_id, response } = req.body
   const changes = req.body
   const id = req.params.id
 
-  if (!username || !password || !position) {
-    res.status(400).json({ message: 'username, password, and position are required' })
+  if (!question_id || !response) {
+    res.status(400).json({ message: 'question_id and response are required' })
   } else {
-    Users.updateUser(changes, id)
-      .then(user => {
-        if (user) {
-          res.status(200).json({ user })
+    Responses.updateResponse(changes, id)
+      .then(response => {
+        if (response) {
+          res.status(200).json({ response })
         } else {
-          res.status(404).json({ message: 'User with the specified ID not found' })
+          res.status(404).json({ message: 'response with the specified ID not found' })
         }
       })
       .catch(err => {
