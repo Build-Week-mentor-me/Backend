@@ -126,30 +126,30 @@ function addResponse(response) {
 }
 
 function updateUser(changes, user_id) {
-  return db('users').where({user_id}).update(changes)
+  return db('users').where({id: user_id}).update(changes)
     .then(id => {
-      return findUser(id[0])
+      return findUser(id)
     })
 }
 
 function updateQuestion(changes, question_id) {
-  return db('questions').where({ question_id }).update(changes)
+  return db('questions').where({ id: question_id }).update(changes)
     .then(id => {
-      return findQuestion(id[0])
+      return findQuestion(id)
     })
 }
 
 function updateResponse(changes, response_id) {
-  return db('responses').where({ response_id }).update(changes)
+  return db('responses').where({ id: response_id }).update(changes)
     .then(id => {
-      return findResponse(id[0])
+      return findResponse(id)
     })
 }
 
 function removeUser(user_id) {
 
   if (user_id) {
-    return db('users').where({user_id}).del()
+    return db('users').where({id: user_id}).del()
       .then(count => {
         return count
       })
@@ -161,7 +161,7 @@ function removeUser(user_id) {
 function removeQuestion(question_id) {
 
   if (question_id) {
-    return db('questions').where({ question_id }).del()
+    return db('questions').where({ id: question_id }).del()
       .then(count => {
         return count
       })
@@ -173,7 +173,7 @@ function removeQuestion(question_id) {
 function removeResponse(response_id) {
 
   if (response_id) {
-    return db('responses').where({ response_id }).del()
+    return db('responses').where({ id: response_id }).del()
       .then(count => {
         return count
       })

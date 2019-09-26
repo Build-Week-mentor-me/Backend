@@ -71,4 +71,45 @@ router.get('/response/:id', (req, res) => {
     })
 })
 
+// UPDATE A USER
+router.put('/:id', (req, res) => {
+  const { username, password, position } = req.body
+  const changes = req.body
+  const id = req.params.id
+
+  if (!username || !password || !position) {
+    res.status(400).json({ message: 'username, password, and position are required' })
+  } else {
+    Users.updateUser(changes, id)
+      .then(user => {
+        if (user) {
+          res.status(200).json({ user })
+        } else {
+          res.status(404).json({ message: 'User with the specified ID not found' })
+        }
+      })
+      .catch(err => {
+        res.status(500).json({ errorMessage: `${err}` })
+      })
+  }
+})
+
+// DELETE A USER
+router.delete('/:id', (rec, res) => {
+  const { id } = req.params
+  const deleted = Users.findUser(id)
+
+  Users.removeUser(id)
+    .then(count => {
+      if (count && count > 0) {
+        res.status(200).json(deleted)
+      } else {
+        res.status(404).json({ message: 'User with the specified ID not found' })
+      }
+    })
+    .catch(err => {
+      res.status(400).json({ errorMessage: `${err}` })
+    })
+})
+
 module.exports = router
