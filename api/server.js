@@ -3,7 +3,7 @@ const cors = require('cors')
 
 require('dotenv').config()
 
-console.log(process.env.JWT_SECRET)
+const authentication = require('./auth-middleware.js')
 
 const usersRouter = require('../users/users-router.js')
 const questionsRouter = require('../questions/questions-router.js')
@@ -17,8 +17,8 @@ server.use(cors())
 server.options('*', cors())
 
 server.use('/api/users', usersRouter)
-server.use('/api/users/questions', questionsRouter)
-server.use('/api/users/responses', responsesRouter)
+server.use('/api/users/questions', authentication, questionsRouter)
+server.use('/api/users/responses', authentication, responsesRouter)
 
 server.get('/', (req, res) => {
   res.send('Welcome to Mentor Me!')

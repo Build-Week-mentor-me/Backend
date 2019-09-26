@@ -14,6 +14,7 @@ USERS:
     - username and password are required
     - returns the user with a token
 
+  ***These user endpoints require a valid token:***
   - Get Users:  api/users
     - returns a list of all users (id, username, and position)
 
@@ -24,7 +25,7 @@ USERS:
     - returns the deleted user
     * Deleting a User also deletes all associated questions and responses
 
-QUESTIONS:
+QUESTIONS:  ***All question endpoints require a valid token***
   - Post Question:  api/users/questions
     - user_id, question, and business-type
       - user_id and question are required
@@ -46,7 +47,7 @@ QUESTIONS:
     - returns the deleted question
     * Deleting a question also deletes all associated responses
   
-RESPONSES:
+RESPONSES:  ***All response endpoints require a valid token***
   - Post response:  api/users/responses
     - question_id, response, and business-type
       - question_id and response are required

@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken')
 
 const Users = require('./users-model.js')
 const generateToken = require('../api/generateToken.js')
+const authentication = require('../api/auth-middleware.js')
 
 // ***endpoints start with /api/users***
 
@@ -61,7 +62,7 @@ router.post('/login', (req, res) => {
 })
 
 // Get users endpoint:
-router.get('/', (req, res) => {
+router.get('/', authentication, (req, res) => {
   Users.findUsers()
     .then(users => {
       res.json(users)
@@ -72,7 +73,7 @@ router.get('/', (req, res) => {
 })
 
 // UPDATE A USER
-router.put('/:id', (req, res) => {
+router.put('/:id', authentication, (req, res) => {
   const { username, password, position } = req.body
   const changes = req.body
   const id = req.params.id
@@ -95,7 +96,7 @@ router.put('/:id', (req, res) => {
 })
 
 // DELETE A USER
-router.delete('/:id', (req, res) => {
+router.delete('/:id', authentication, (req, res) => {
   const { id } = req.params
   const deleted = Users.findUser(id)
     .then(user => {
