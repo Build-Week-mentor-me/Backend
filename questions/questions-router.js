@@ -70,4 +70,48 @@ router.get('/question/:id', (req, res) => {
     })
 })
 
+// UPDATE A QUESTION
+router.put('/:id', (req, res) => {
+  const { user_id, question } = req.body
+  const changes = req.body
+  const id = req.params.id
+
+  if (!user_id || !question) {
+    res.status(400).json({ message: 'user_id and question are required' })
+  } else {
+    Questions.updateQuestion(changes, id)
+      .then(question => {
+        if (question) {
+          res.status(200).json({ question })
+        } else {
+          res.status(404).json({ message: 'question with the specified ID not found' })
+        }
+      })
+      .catch(err => {
+        res.status(500).json({ errorMessage: `${err}` })
+      })
+  }
+})
+
+// DELETE A QUESTION
+router.delete('/:id', (req, res) => {
+  const { id } = req.params
+  const deleted = Questions.findQuestion(id)
+    .then(question => {
+      return question
+    })
+
+  Questions.removeQuestion(id)
+    .then(count => {
+      if (count && count > 0) {
+        res.status(200).json(deleted)
+      } else {
+        res.status(404).json({ message: 'Question with the specified ID not found' })
+      }
+    })
+    .catch(err => {
+      res.status(400).json({ errorMessage: `${err}` })
+    })
+})
+
 module.exports = router

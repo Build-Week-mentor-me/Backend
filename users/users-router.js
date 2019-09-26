@@ -95,9 +95,12 @@ router.put('/:id', (req, res) => {
 })
 
 // DELETE A USER
-router.delete('/:id', (rec, res) => {
+router.delete('/:id', (req, res) => {
   const { id } = req.params
   const deleted = Users.findUser(id)
+    .then(user => {
+      return user
+    })
 
   Users.removeUser(id)
     .then(count => {
