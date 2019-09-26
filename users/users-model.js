@@ -126,25 +126,58 @@ function addResponse(response) {
 }
 
 function updateUser(changes, user_id) {
-  
+  return db('users').where({user_id}).update(changes)
+    .then(id => {
+      return findUser(id[0])
+    })
 }
 
 function updateQuestion(changes, question_id) {
-
+  return db('questions').where({ question_id }).update(changes)
+    .then(id => {
+      return findQuestion(id[0])
+    })
 }
 
 function updateResponse(changes, response_id) {
-
+  return db('responses').where({ response_id }).update(changes)
+    .then(id => {
+      return findResponse(id[0])
+    })
 }
 
 function removeUser(user_id) {
-  
+
+  if (user_id) {
+    return db('users').where({user_id}).del()
+      .then(count => {
+        return count
+      })
+  }else {
+    return null
+  }
 }
 
 function removeQuestion(question_id) {
 
+  if (question_id) {
+    return db('questions').where({ question_id }).del()
+      .then(count => {
+        return count
+      })
+  } else {
+    return null
+  }
 }
 
 function removeResponse(response_id) {
 
+  if (response_id) {
+    return db('responses').where({ response_id }).del()
+      .then(count => {
+        return count
+      })
+  } else {
+    return null
+  }
 }
