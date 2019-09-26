@@ -147,12 +147,11 @@ function updateResponse(changes, response_id) {
 }
 
 function removeUser(user_id) {
-  const deleted = findUser(user_id)
 
   if (user_id) {
     return db('users').where({user_id}).del()
       .then(count => {
-        return deleted
+        return count
       })
   }else {
     return null
@@ -160,12 +159,11 @@ function removeUser(user_id) {
 }
 
 function removeQuestion(question_id) {
-  const deleted = findQuestion(question_id)
 
   if (question_id) {
     return db('questions').where({ question_id }).del()
       .then(count => {
-        return deleted
+        return count
       })
   } else {
     return null
@@ -173,12 +171,11 @@ function removeQuestion(question_id) {
 }
 
 function removeResponse(response_id) {
-  const deleted = findQuestion(response_id)
 
   if (response_id) {
     return db('responses').where({ response_id }).del()
       .then(count => {
-        return deleted
+        return count
       })
   } else {
     return null

@@ -91,4 +91,9 @@ router.put('/:id', (req, res) => {
   }
 })
 
+// DELETE A USER
+router.delete('/:id', (rec, res) => {
+  
+})
+
 module.exports = router
