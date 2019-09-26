@@ -93,7 +93,20 @@ router.put('/:id', (req, res) => {
 
 // DELETE A USER
 router.delete('/:id', (rec, res) => {
-  
+  const { id } = req.params
+  const deleted = Users.findUser(id)
+
+  Users.removeUser(id)
+    .then(count => {
+      if (count && count > 0) {
+        res.status(200).json(deleted)
+      }else {
+        res.status(404).json({ message: 'User with the specified ID not found' })
+      }
+    })
+    .catch(err => {
+      res.status(400).json({ errorMessage: `${err}` })
+    })
 })
 
 module.exports = router
