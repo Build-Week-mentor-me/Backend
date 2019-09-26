@@ -68,4 +68,27 @@ router.get('/', (req, res) => {
     })
 })
 
+// UPDATE A USER
+router.put('/:id', (req, res) => {
+  const { username, password, position } = req.body
+  const changes = req.body
+  const id = req.params.id
+
+  if (!username || !password || !position) {
+    res.status(400).json({ message: 'username, password, and position are required' })
+  }else {
+    Users.updateUser(changes, id)
+      .then(user => {
+        if (user) {
+          res.status(200).json({user})
+        }else {
+          res.status(404).json({ message: 'User with the specified ID not found' })
+        }
+      })
+      .catch(err => {
+        res.status(500).json({ errorMessage: `${err}` })
+      })
+  }
+})
+
 module.exports = router
