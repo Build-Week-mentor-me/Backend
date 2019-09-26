@@ -94,7 +94,7 @@ router.put('/:id', (req, res) => {
 })
 
 // DELETE A QUESTION
-router.delete('/:id', (rec, res) => {
+router.delete('/:id', (req, res) => {
   const { id } = req.params
   const deleted = Questions.findQuestion(id)
 
