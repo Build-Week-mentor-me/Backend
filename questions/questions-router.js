@@ -72,7 +72,7 @@ router.get('/question/:id', (req, res) => {
 
 // UPDATE A QUESTION
 router.put('/:id', (req, res) => {
-  const { username, password, position } = req.body
+  const { user_id, question } = req.body
   const changes = req.body
   const id = req.params.id
 
