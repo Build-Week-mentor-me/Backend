@@ -17,6 +17,13 @@ USERS:
   - Get Users:  api/users
     - returns a list of all users (id, username, and position)
 
+  - Update a User: api/users/:id
+    - returns the updated user
+
+  - Delete a User: api/users/:id
+    - returns the deleted user
+    * Deleting a User also deletes all associated questions and responses
+
 QUESTIONS:
   - Post Question:  api/users/questions
     - user_id, question, and business-type
@@ -31,6 +38,13 @@ QUESTIONS:
 
   - Get a specific question:  api/users/questions/question/:id
     - returns the user and question (id, user_id, username, position, question, and business-type) 
+
+  - Update a Question: api/users/questions/:id
+    - returns the updated question
+
+  - Delete a Question: api/users/questions/:id
+    - returns the deleted question
+    * Deleting a question also deletes all associated responses
   
 RESPONSES:
   - Post response:  api/users/responses
@@ -45,4 +59,10 @@ RESPONSES:
     - returns a list of all of a question's responses (id, question, question_id, username, position, response, and business-type)
 
   - Get a specific response:  api/users/responses/response/:id
-    - returns the user and response (id, question, question_id, username, position, response, and business-type) 
+    - returns the user and response (id, question, question_id, username, position, response, and business-type)
+
+  - Update a Response: api/users/responses/:id
+    - returns the updated response
+
+  - Delete a Response: api/users/responses/:id
+    - returns the deleted response
