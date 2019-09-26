@@ -93,12 +93,12 @@ router.put('/:id', (req, res) => {
   }
 })
 
-// DELETE A USER
+// DELETE A QUESTION
 router.delete('/:id', (rec, res) => {
   const { id } = req.params
-  const deleted = Users.findUser(id)
+  const deleted = Questions.findQuestion(id)
 
-  Users.removeUser(id)
+  Questions.removeQuestion(id)
     .then(count => {
       if (count && count > 0) {
         res.status(200).json(deleted)
