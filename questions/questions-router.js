@@ -103,7 +103,7 @@ router.delete('/:id', (rec, res) => {
       if (count && count > 0) {
         res.status(200).json(deleted)
       } else {
-        res.status(404).json({ message: 'User with the specified ID not found' })
+        res.status(404).json({ message: 'Question with the specified ID not found' })
       }
     })
     .catch(err => {
