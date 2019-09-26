@@ -98,6 +98,9 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   const { id } = req.params
   const deleted = Responses.findResponse(id)
+    .then(response => {
+      return response
+    })
 
   Responses.removeResponse(id)
     .then(count => {
