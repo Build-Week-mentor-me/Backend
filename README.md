@@ -14,7 +14,7 @@ USERS:
     - username and password are required
     - returns the user with a token
 
-  ***These user endpoints require a valid token***
+  ***These user endpoints require a valid token:***
   - Get Users:  api/users
     - returns a list of all users (id, username, and position)
 
